@@ -18,7 +18,11 @@ When Casey shares ideas, use the `idea-intake` skill.
 3. Casey picks 5; `visual-ideas` skill writes `visuals.md`
 4. Draft articles in `draft.md` with the `ledger-voice` skill
 5. `libel-checker` agent reviews before print
-6. Final copy goes in `final.md`; add headlines to `ideas/published.md`
+6. Final copy goes in `final.md`
+7. When Casey approves, the `publish-issue` skill adds it to the live site in `site/`
+
+## The website
+`site/` is eastlakeviewledger.com. Pushing to `main` deploys it through Cloudflare Pages. Only change `site/` when publishing an approved issue.
 
 ## Rules for every agent
 - Load `ledger-voice` before writing any copy

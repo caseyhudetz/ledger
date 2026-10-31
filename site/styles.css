@@ -1,0 +1,395 @@
+:root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #111;
+  background: #f4f3ef;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 48px 20px 36px;
+  text-align: center;
+}
+
+.desktop-edition {
+  display: block;
+}
+
+.desktop-issue {
+  margin-bottom: 48px;
+  scroll-margin-top: 20px;
+}
+
+.desktop-issue .issue-sheet {
+  margin-bottom: 0;
+}
+
+.issue-sheet {
+  display: block;
+  width: min(100%, 1050px);
+  margin: 0 auto 24px;
+  background: #fff;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 12%);
+  transition: box-shadow 160ms ease, transform 160ms ease;
+}
+
+.issue-sheet:hover,
+.issue-sheet:focus-visible {
+  box-shadow: 0 12px 38px rgb(0 0 0 / 17%);
+  transform: translateY(-2px);
+}
+
+.issue-sheet img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.edition-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 0 0 17px;
+  font: 13px/1.3 Arial, Helvetica, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.edition-nav a {
+  color: #444;
+  text-decoration: none;
+}
+
+.edition-nav a:hover,
+.edition-nav a:focus-visible,
+.edition-nav a[aria-current="page"],
+.edition-nav a[aria-current="location"] {
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.email-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.email {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111;
+  font: 16px Georgia, "Times New Roman", serif;
+  cursor: pointer;
+}
+
+.email:hover,
+.email:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.copy-message {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  max-width: calc(100vw - 24px);
+  padding: 7px 10px;
+  border-radius: 4px;
+  background: #111;
+  color: #fff;
+  font: 13px Arial, Helvetica, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 5px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.copy-message.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.mobile-edition {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  :root,
+  body {
+    background: #fff;
+  }
+
+  body {
+    padding: 0;
+    text-align: left;
+  }
+
+  .desktop-edition {
+    display: none;
+  }
+
+  .mobile-edition {
+    display: block;
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 20px 18px 38px;
+  }
+
+  .masthead {
+    padding: 0 0 12px;
+    border-bottom: 3px double #111;
+    text-align: center;
+  }
+
+  .mobile-issue {
+    scroll-margin-top: 16px;
+  }
+
+  .issue-break {
+    margin-top: 12px;
+    padding-top: 34px;
+    border-top: 6px solid #111;
+  }
+
+  .masthead-art {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .issue-meta {
+    margin: 9px 0 0;
+    font: 600 10px/1.3 Arial, Helvetica, sans-serif;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+  }
+
+  .story {
+    padding: 25px 0 27px;
+    border-bottom: 1px solid #111;
+  }
+
+  .story h1,
+  .story h2 {
+    margin: 0 0 13px;
+    font-family: Didot, "Bodoni 72", "Bodoni MT", Georgia, "Times New Roman", serif;
+    font-size: clamp(29px, 8vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  .story h1 {
+    font-size: clamp(34px, 9.3vw, 49px);
+  }
+
+  .story p {
+    margin: 0 0 12px;
+    font: 18px/1.48 Georgia, "Times New Roman", serif;
+  }
+
+  .story p:last-child {
+    margin-bottom: 0;
+  }
+
+  .story-photo {
+    position: relative;
+    width: 100%;
+    margin: 0 0 16px;
+    overflow: hidden;
+    background: #eee;
+  }
+
+  .story-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    max-width: none;
+    height: auto;
+  }
+
+  .october-lead {
+    aspect-ratio: 927 / 546;
+  }
+
+  .october-lead img {
+    width: 164.1%;
+    transform: translate(-1.45%, -10.6%);
+  }
+
+  .october-guard {
+    aspect-ratio: 509 / 404;
+    width: min(88%, 410px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .october-guard img {
+    width: 298.8%;
+    transform: translate(-64.83%, -16.65%);
+  }
+
+  .october-metal {
+    aspect-ratio: 552 / 414;
+  }
+
+  .october-metal img {
+    width: 275.5%;
+    transform: translate(-26.1%, -47.55%);
+  }
+
+  .october-halloween {
+    aspect-ratio: 509 / 568;
+    width: min(82%, 380px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .october-halloween img {
+    width: 298.8%;
+    transform: translate(-64.83%, -47.55%);
+  }
+
+  .october-stump {
+    aspect-ratio: 470 / 548;
+    width: min(78%, 360px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .october-stump img {
+    width: 323.6%;
+    transform: translate(-31.49%, -70.95%);
+  }
+
+  .september-drone {
+    aspect-ratio: 558 / 738;
+    width: min(92%, 410px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .september-drone img {
+    width: 272.6%;
+    transform: translate(-4.08%, -20.8%);
+  }
+
+  .september-roll {
+    aspect-ratio: 416 / 347;
+  }
+
+  .september-roll img {
+    width: 365.6%;
+    transform: translate(-69.17%, -21.1%);
+  }
+
+  .september-statue {
+    aspect-ratio: 312 / 386;
+    width: min(76%, 320px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .september-statue img {
+    width: 487.5%;
+    transform: translate(-4.01%, -62.25%);
+  }
+
+  .september-bot {
+    aspect-ratio: 254 / 387;
+    width: min(58%, 225px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .september-bot img {
+    width: 598.8%;
+    transform: translate(-54.31%, -62.4%);
+  }
+
+  .september-vacant {
+    aspect-ratio: 495 / 284;
+  }
+
+  .september-vacant img {
+    width: 307.3%;
+    transform: translate(-4.4%, -84.1%);
+  }
+
+  .caption,
+  .byline {
+    margin-top: -5px !important;
+    font-size: 13px !important;
+    font-style: italic !important;
+    line-height: 1.35 !important;
+  }
+
+  .issue-end {
+    padding: 27px 0 34px;
+    text-align: center;
+  }
+
+  .issue-end .pdf-link {
+    margin-bottom: 0;
+  }
+
+  .mobile-footer {
+    padding-top: 29px;
+    border-top: 3px double #111;
+    text-align: center;
+  }
+
+  .pdf-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 11px 16px;
+    border: 1px solid #111;
+    color: #111;
+    font: 700 14px/1 Arial, Helvetica, sans-serif;
+    text-decoration: none;
+  }
+
+  .pdf-link:hover,
+  .pdf-link:focus-visible {
+    background: #111;
+    color: #fff;
+  }
+
+  .mobile-footer .edition-nav {
+    margin-bottom: 19px;
+  }
+
+  .mobile-footer .email {
+    font-size: 15px;
+  }
+
+  .satire {
+    margin: 17px 0 0;
+    font: italic 13px/1.4 Georgia, "Times New Roman", serif;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .issue-sheet,
+  .copy-message {
+    transition: none;
+  }
+}
