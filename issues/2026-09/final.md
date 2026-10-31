@@ -1,1 +1,3 @@
-# Issue 1 (September 2026)\n\nTODO: paste final copy here.
+# Issue 1 (September 2026)
+
+TODO: paste final copy here.
