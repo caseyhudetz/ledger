@@ -7,6 +7,8 @@ One printed vertical front page per month, shared around the neighborhood. Site:
 - `ideas/inbox.md`: raw rambles, verbatim
 - `ideas/backlog.md`: every headline idea, imported plus refined
 - `ideas/published.md`: what has already run (never repeat)
+- `ideas/favorites.md`: Casey's hand-picked ideas; pitch from these first
+- `desk/`: Casey's own writing. Never rewrite it; suggest in chat or a separate notes file
 - `issues/YYYY-MM/`: notes, pitches, draft, visuals and final for each issue
 
 ## Everyday mode
@@ -25,6 +27,7 @@ When Casey shares ideas, use the `idea-intake` skill.
 `site/` is eastlakeviewledger.com. Pushing to `main` deploys it through Cloudflare Pages. Only change `site/` when publishing an approved issue.
 
 ## Rules for every agent
+- Casey's words are his. Edit only files Claude wrote; for Casey's writing, suggest, don't replace
 - Load `ledger-voice` before writing any copy
 - Never invent quotes from real, named people
 - No em dashes. No Oxford comma.
