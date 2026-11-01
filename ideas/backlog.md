@@ -235,4 +235,4 @@ Imported from Casey's Google Doc on 2026-10-31. Raw and unrefined on purpose. Ne
 200. Local Man Conflicted About Whether to Report Sick Ass Graffiti  
 
 ## Inbox refinements
-
+- [2026-11-01] ★ Big Gulp Litter Plummets 98% After Circle K Closes | alts: Ward Credits Itself for Historic Drop in Big Gulp Litter After Circle K Closes; Last Big Gulp Cup Found on Broadway Donated to Chicago History Museum | structure: study confirms what everyone knows | topic: litter, Broadway, blight (builds on backlog 45)
