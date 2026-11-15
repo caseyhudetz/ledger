@@ -1,0 +1,42 @@
+name: Generate Ledger shirt artwork
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'merch/build_shirt_art.py'
+      - 'site/masthead.png'
+      - '.github/workflows/generate-shirt-art.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-art:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: pip install 'Pillow>=11,<13'
+      - name: Build white transparent print design
+        run: python merch/build_shirt_art.py
+      - name: Upload print file for download
+        uses: actions/upload-artifact@v4
+        with:
+          name: ledger-white-shirt-artwork
+          path: merch/east-lakeview-ledger-white-logo-print.png
+      - name: Commit generated artwork
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add merch/east-lakeview-ledger-white-logo-print.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate white Ledger t-shirt artwork"
+            git push
+          fi
