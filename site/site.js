@@ -35,5 +35,30 @@ document.querySelectorAll(".copy-email").forEach((button) => {
 });
 
 
-// Until a mailing-list provider is connected, send an explicit email subscription request.
-document.querySelectorAll('#subscribe-form').forEach((form)=>{form.addEventListener('submit',(event)=>{event.preventDefault();const email=form.querySelector('input[type="email"]');if(!email||!email.reportValidity())return;const subject=encodeURIComponent('Subscribe to The East Lakeview Ledger');const body=encodeURIComponent('Please add '+email.value.trim()+' to The East Lakeview Ledger mailing list.');window.location.href='mailto:eastlakeviewledger@gmail.com?subject='+subject+'&body='+body;});});
+// Submit directly to the Google Apps Script endpoint through an invisible form target.
+// Google Apps Script does not provide a readable cross-origin response, so avoid
+// falsely asserting that an email was successfully stored.
+document.querySelectorAll(".subscribe-form").forEach((form) => {
+  const frame = form.parentElement.querySelector(".signup-frame");
+  const status = form.parentElement.querySelector(".signup-status");
+  const button = form.querySelector('button[type="submit"]');
+  let submitted = false;
+
+  form.addEventListener("submit", (event) => {
+    if (!form.reportValidity()) {
+      event.preventDefault();
+      return;
+    }
+    submitted = true;
+    button.disabled = true;
+    status.textContent = "Submitting…";
+  });
+
+  frame.addEventListener("load", () => {
+    if (!submitted) return;
+    submitted = false;
+    button.disabled = false;
+    status.textContent = "Submission sent. Thank you!";
+    form.reset();
+  });
+});
