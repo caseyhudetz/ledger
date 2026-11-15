@@ -33,3 +33,7 @@ async function copyEmail(event) {
 document.querySelectorAll(".copy-email").forEach((button) => {
   button.addEventListener("click", copyEmail);
 });
+
+
+// Until a mailing-list provider is connected, send an explicit email subscription request.
+document.querySelectorAll('#subscribe-form').forEach((form)=>{form.addEventListener('submit',(event)=>{event.preventDefault();const email=form.querySelector('input[type="email"]');if(!email||!email.reportValidity())return;const subject=encodeURIComponent('Subscribe to The East Lakeview Ledger');const body=encodeURIComponent('Please add '+email.value.trim()+' to The East Lakeview Ledger mailing list.');window.location.href='mailto:eastlakeviewledger@gmail.com?subject='+subject+'&body='+body;});});
