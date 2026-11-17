@@ -30,7 +30,7 @@ function doPost(e) {
     const lastRow = sheet.getLastRow();
     const exists = lastRow > 1
       ? sheet.getRange(2, 2, lastRow - 1, 1).getDisplayValues()
-          .some(row => row[0].trim().toLowerCase() === email)
+          .some(row => row[0].trim().replace(/^\x27/, "").toLowerCase() === email)
       : false;
 
     if (!exists) {
