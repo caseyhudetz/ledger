@@ -16,7 +16,7 @@ function doPost(e) {
   const website = String(params.website || "");
 
   // Honeypot, valid email shape and length checks.
-  if (website || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email) || email.length > 254) {
+  if (website || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) {
     return ContentService.createTextOutput("Invalid subscription");
   }
 
@@ -50,8 +50,8 @@ function doPost(e) {
         to: LEDGER_NOTIFICATION_EMAIL,
         subject: "New East Lakeview Ledger signup",
         body:
-          "A new reader signed up for the Ledger.\\n\\n" +
-          "Email: " + email + "\\n\\n" +
+          "A new reader signed up for the Ledger.\n\n" +
+          "Email: " + email + "\n\n" +
           "Subscriber list: " + LEDGER_SHEET_URL
       });
     } catch (err) {
