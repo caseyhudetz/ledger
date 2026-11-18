@@ -619,3 +619,20 @@ body {
 }
 .november-story p {font:17px/1.45 Georgia,serif;margin:0 0 11px;}
 @media(max-width:720px) { .november-desktop-text {display:none;} }
+
+/* The November front page is the masthead: no duplicate month label above it. */
+#desktop-november .issue-sheet { display:block; }
+#mobile-november .november-photo {
+  margin: 15px 0 18px;
+  padding: 0;
+  width: 100%;
+  background: #f5f5f2;
+}
+#mobile-november .november-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#mobile-november .lead-story .november-photo {
+  margin-top: 0;
+}
