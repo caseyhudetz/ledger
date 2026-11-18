@@ -599,3 +599,37 @@ body {
 #mobile-november .lead-story .november-photo {
   margin-top: 0;
 }
+
+/* More breathable mobile editorial typography; print images and desktop unchanged. */
+@media (max-width: 720px) {
+  .mobile-issue .story {
+    padding-top: 32px;
+    padding-bottom: 34px;
+  }
+  .mobile-issue .story h1,
+  .mobile-issue .story h2 {
+    line-height: 1.14;
+    letter-spacing: -0.015em;
+    margin-bottom: 18px;
+    text-wrap: pretty;
+  }
+  .mobile-issue .story h1 {
+    font-size: clamp(30px, 7.7vw, 42px);
+  }
+  .mobile-issue .story h2 {
+    font-size: clamp(27px, 7vw, 37px);
+  }
+  .mobile-issue .story p {
+    font-size: 18px;
+    line-height: 1.58;
+    margin-bottom: 15px;
+  }
+  .mobile-issue .story-photo,
+  .mobile-issue .november-photo {
+    margin-bottom: 21px;
+  }
+}
+@media (max-width: 360px) {
+  .mobile-issue .story h1 { font-size: 29px; }
+  .mobile-issue .story h2 { font-size: 26px; }
+}
