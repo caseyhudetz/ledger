@@ -1,0 +1,38 @@
+name: Import November Canva first page
+on:
+  push:
+    branches: [ledger-single-scroll-monthly-issues]
+    paths: ['.github/workflows/import-november-cover.yml']
+permissions:
+  contents: write
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install Pillow
+      - name: Fetch November front page (full resolution only)
+        env:
+          CANVA_PAGE_IMAGE: "https://media.canva.com/v2/document-image/hash:407697518/height:1437/id:DAHWISQJQjU/type:B/width:1093?brand=BABw9aLvHMg&csig=AAAAAAAAAAAAAAAAAAAAAHiUtD1WUNqReaqO4-aN_NJud18uIrSkMQ1CK8pNPY3-&disableexport=T&exp=1795039313&fallback=https%3A%2F%2Fs3.amazonaws.com%2Fdocument-export-us1.canva.com%2FQJQjU%2FDAHWISQJQjU%2F168%2Fthumbnail%2F0001.png%3FX-Amz-Algorithm%3DAWS4-HMAC-SHA256%26X-Amz-Credential%3DAKIAQYCGKMUH545XFSWX%252F20261118%252Fus-east-1%252Fs3%252Faws4_request%26X-Amz-Date%3D20261118T141251Z%26X-Amz-Expires%3D31423%26X-Amz-Signature%3D521636b27e864dbda6dacea015b60b536763b90cfd74326380b1d3db2fdc4909%26X-Amz-SignedHeaders%3Dhost%26response-expires%3DWed%252C%252018%2520Nov%25202026%252022%253A56%253A34%2520GMT&osig=AAAAAAAAAAAAAAAAAAAAAJNdpVJLf8bgevM_SAOdLDP-h17X3aLz6f2-cVRDlTk7&page=1&signed=brand%2Cdisableexport%2Cfallback%2Cpage%2Cversion&signer=document-rpc&version=168"
+        run: |
+          python - <<'PY'
+          import io, os, urllib.request
+          from PIL import Image
+          req=urllib.request.Request(os.environ["CANVA_PAGE_IMAGE"], headers={"User-Agent":"Mozilla/5.0"})
+          with urllib.request.urlopen(req,timeout=30) as f:
+              raw=f.read()
+          im=Image.open(io.BytesIO(raw)).convert("RGB")
+          print("Canva first-page image size:", im.size)
+          if im.width < 900 or im.height < 1200:
+              raise SystemExit("Canva supplied preview-sized artwork; do not publish")
+          im.save("site/november-2026.png",optimize=True)
+          PY
+      - name: Commit approved source page
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add site/november-2026.png
+          git diff --cached --quiet || (git commit -m "Add exact November Canva front page" && git push)
