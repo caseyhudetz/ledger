@@ -2,7 +2,7 @@ name: Generate November Ledger article images
 on:
   push:
     branches:
-      - ledger-fix-november-images
+      - main
     paths:
       - '.github/workflows/generate-november-images.yml'
       - 'scripts/build_november_photos.py'
