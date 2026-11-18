@@ -530,3 +530,55 @@ body {
   .site-nav { padding-left: 14px; padding-right: 14px; }
   .subscribe-form input { padding-left: 10px; padding-right: 8px; }
 }
+
+/* Single continuous issue timeline: no separate archive or site navigation. */
+.month-divider {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: min(100%, 1050px);
+  margin: 0 auto 22px;
+  color: #151515;
+  font: 600 25px/1.2 Georgia, "Times New Roman", serif;
+  white-space: nowrap;
+  letter-spacing: -0.025em;
+}
+.month-divider::before,
+.month-divider::after {
+  content: "";
+  flex: 1;
+  min-width: 0;
+  height: 1px;
+  background: #88847d;
+}
+.desktop-issue {
+  margin-bottom: 68px;
+}
+.desktop-issue:last-child {
+  margin-bottom: 32px;
+}
+.mobile-issue .month-divider {
+  margin: 5px 0 20px;
+  width: 100%;
+  font-size: 22px;
+}
+@media (max-width:720px) {
+  .mobile-edition {
+    padding-top: 18px;
+  }
+  .mobile-issue .month-divider {
+    font-size: 20px;
+    gap: 11px;
+  }
+  .mobile-issue .issue-break {
+    margin-top: 0;
+    padding-top: 10px;
+    border-top: 0;
+  }
+  .mobile-issue:not(:first-child) {
+    padding-top: 28px;
+  }
+  .site-footer {
+    margin-top: 24px;
+  }
+}
